@@ -1,31 +1,27 @@
 import streamlit as st
-from PyPDF2 import PdfReader
 
-def read_pdf(file):
-    pdf_reader = PdfReader(file)
-    text = ""
-    for page in pdf_reader.pages:
-        text += page.extract_text()
-    return text
+# Función para cargar archivo PDF y hacer preguntas
+def cargar_pdf_y_hacer_preguntas(archivo, preguntas):
+    # Aquí iría la lógica para procesar el PDF y hacer preguntas
+    # Por ahora, simplemente mostramos un mensaje de éxito
+    st.success(f'Se cargó el archivo PDF: {archivo.name}')
+    st.write("Aquí puedes hacer preguntas sobre el PDF cargado.")
+
+    # Mostrar preguntas y respuestas
+    for pregunta in preguntas:
+        st.write(f"Pregunta: {pregunta}")
+        st.write("Respuesta: Aquí iría la respuesta correspondiente")
 
 def main():
-    st.title("Asistente Virtual UPIICSA")
-    st.title("Equipo 5 - Aplicaciones de Redes")
-    st.write("Adjunta un archivo PDF y haz preguntas sobre él.")
+    st.title("ASISTENTE VIRTUAL UPIICSA")
 
-    uploaded_file = st.file_uploader("Subir archivo PDF", type=["pdf"])
+    archivo = st.file_uploader("Selecciona un archivo PDF", type="pdf")
 
-    if uploaded_file is not None:
-        pdf_text = read_pdf(uploaded_file)
-        st.write("Archivo cargado exitosamente.")
-
-        st.subheader("Haz tu pregunta:")
-        question = st.text_input("Pregunta:")
-
-        if st.button("Enviar"):
-            # Aquí podrías agregar la lógica para procesar la pregunta
-            # y mostrar la respuesta correspondiente.
-            st.write("Aquí iría la respuesta a la pregunta:", question)
+    if archivo is not None:
+        preguntas = st.text_input("Haz tu pregunta:")
+        if preguntas:
+            preguntas = preguntas.split(";")
+            cargar_pdf_y_hacer_preguntas(archivo, preguntas)
 
 if __name__ == "__main__":
     main()
