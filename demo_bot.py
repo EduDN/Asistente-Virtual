@@ -14,6 +14,7 @@ def cargar_pdf_y_hacer_preguntas(archivo, preguntas):
 
 def main():
     st.title("ASISTENTE VIRTUAL UPIICSA")
+    st.title("EQUIPO 5 - APLICACIONES DE REDES")
 
     archivo = st.file_uploader("Selecciona un archivo PDF", type="pdf")
 
