@@ -1,8 +1,4 @@
 import streamlit as st
-import openai
-
-# Set your OpenAI API key here
-openai.api_key = 'sk-proj-sHLNZSy43TmxXgKgMJaHT3BlbkFJtouoJQDVAdCVOr8LW6JG'
 
 # Función para cargar archivo PDF y hacer preguntas
 def cargar_pdf_y_hacer_preguntas(archivo, preguntas):
@@ -14,23 +10,11 @@ def cargar_pdf_y_hacer_preguntas(archivo, preguntas):
     # Mostrar preguntas y respuestas
     for pregunta in preguntas:
         st.write(f"Pregunta: {pregunta}")
-        respuesta = obtener_respuesta_openai(pregunta)
-        st.write("Respuesta:", respuesta)
-
-# Función para obtener respuesta de OpenAI
-def obtener_respuesta_openai(pregunta):
-    # Llamar a la API de OpenAI para obtener la respuesta
-    response = openai.Completion.create(
-        engine="gpt-3.5-turbo",  # Utilizar el modelo 'text-davinci-002'
-        prompt=pregunta,
-        temperature=0.5,
-        max_tokens=100
-    )
-    return response.choices[0].text.strip()
+        st.write("Respuesta: Aquí iría la respuesta correspondiente")
 
 def main():
     st.title("ASISTENTE VIRTUAL UPIICSA")
-    st.title("EQUIPO 5 - APLICACIONES DE REDESS")
+    st.title("EQUIPO 5 - APLICACIONES DE REDES")
 
     archivo = st.file_uploader("Selecciona un archivo PDF", type="pdf")
 
